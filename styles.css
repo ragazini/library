@@ -1,0 +1,48 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  width: 70vw;
+  background-color: blanchedalmond;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  /* background-color: bisque; */
+}
+
+.modal-header-nb {
+  padding: 0;
+  margin-top: 0px;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  gap: 10px;
+}
+
+.pages,
+.author,
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
+.modal-open {
+  cursor: pointer;
+}
+
+.modal-close {
+  cursor: pointer;
+  margin-top: 0px;
+}

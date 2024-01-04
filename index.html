@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./script.js" defer></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Library App</h1>
+      <img src="./plusSign.svg" alt="openMyLibrary" class="modal-open" />
+    </div>
+    <dialog class="modal" id="modal">
+      <div class="modal-header">
+        <h3 class="modal-header-nb">New Book</h3>
+        <p class="modal-close">&times;</p>
+      </div>
+      <form action="#" class="modal-form" method="POST">
+        <label for="title" class="title"
+          ><span>Book title</span>
+          <input type="text" id="title" name="bookName" required
+        /></label>
+
+        <label for="author" class="author">
+          <span>Author</span>
+          <input type="text" id="author" name="authorName" required
+        /></label>
+
+        <label for="pages" class="pages"
+          >Number of pages
+          <input
+            type="number"
+            name="pages"
+            min="10"
+            max="7000"
+            id="pages"
+            required
+          />
+        </label>
+
+        <label for="isRead"
+          >Have you read it?
+          <input type="checkbox" id="isRead" name="isRead" />
+        </label>
+        <button type="submit" id="submit">SUBMIT</button>
+      </form>
+    </dialog>
+  </body>
+</html>
