@@ -5,9 +5,9 @@ function Book(title, author, pages, isRead) {
   this.author = author;
   this.pages = pages;
   this.isRead = isRead !== undefined ? isRead : false;
-  this.info = function () {
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.isRead}`;
-  };
+  // this.info = function () {
+  //   return `${this.title} by ${this.author}, ${this.pages} pages, ${this.isRead}`;
+  // };
 }
 
 // const book1 = new Book("my book", "leo", 123);
@@ -24,6 +24,13 @@ function addBook() {
   const author = authorInput.value;
   const pages = pagesInput.value;
   const isRead = isReadInput.checked;
+  // console.log(isReadInput)
+  // console.log({ isReadInput });
+
+  if (!titleInput.value || !authorInput.value || !pagesInput.value) {
+    alert("Please fill in all required fields.");
+    return;
+  }
 
   const newBook = new Book(title, author, pages, isRead);
   library.push(newBook);
