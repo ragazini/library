@@ -12,40 +12,69 @@
       <h1>Library App</h1>
       <img src="./plusSign.svg" alt="openMyLibrary" class="modal-open" />
     </div>
-    <dialog class="modal" id="modal">
-      <div class="modal-header">
-        <h3 class="modal-header-nb">New Book</h3>
-        <p class="modal-close">&times;</p>
-      </div>
-      <form action="#" class="modal-form" method="POST">
-        <label for="title" class="title"
-          ><span>Book title</span>
-          <input type="text" id="title" name="bookName" required
-        /></label>
+    <div class="container">
+      <dialog class="modal" id="modal">
+        <div class="modal-header">
+          <h3 class="modal-header-nb">New Book</h3>
+          <p class="modal-close">&times;</p>
+        </div>
+        <form action="#" class="modal-form" method="POST">
+          <label for="title" class="title"
+            ><span>Book Title</span>
+            <input type="text" id="title" name="bookName" required
+          /></label>
 
-        <label for="author" class="author">
-          <span>Author</span>
-          <input type="text" id="author" name="authorName" required
-        /></label>
+          <label for="author" class="author">
+            <span>Author</span>
+            <input type="text" id="author" name="authorName" required
+          /></label>
 
-        <label for="pages" class="pages"
-          >Number of pages
-          <input
-            type="number"
-            name="pages"
-            min="10"
-            max="7000"
-            id="pages"
-            required
-          />
-        </label>
+          <label for="pages" class="pages"
+            ><span>Number of Pages</span>
+            <input
+              type="number"
+              name="pages"
+              min="10"
+              max="7000"
+              id="pages"
+              required
+            />
+          </label>
 
-        <label for="isRead"
-          >Have you read it?
-          <input type="checkbox" id="isRead" name="isRead" />
-        </label>
-        <button type="submit" id="submit">SUBMIT</button>
-      </form>
-    </dialog>
+          <label for="isRead"
+            >Have you read it?
+            <input type="checkbox" id="isRead" name="isRead" />
+          </label>
+          <button type="submit" id="submit">SUBMIT</button>
+        </form>
+      </dialog>
+
+      <div class="card"></div>
+
+      <table class="table">
+        <thead class="th">
+          <tr class="tr">
+            <th class="th">Title</th>
+            <th class="th">Author</th>
+            <th class="th">Pages</th>
+            <th class="th">Read</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          <!-- <tr>
+            <td>Lorem ipsum dolor sit amet consectetur.</td>
+            <td>Lorem, ipsum dolor.</td>
+            <td>Lorem.</td>
+            <td>y/n</td>
+          </tr>
+          <tr>
+            <td>Lorem ipsum dolor sit amet consectetur.</td>
+            <td>Lorem, ipsum dolor.</td>
+            <td>Lorem.</td>
+            <td>y/n</td>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
   </body>
 </html>
