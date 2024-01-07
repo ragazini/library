@@ -92,11 +92,19 @@ function displayBooks() {
     const authorCell = newRow.insertCell(1);
     const pagesCell = newRow.insertCell(2);
     const isReadCell = newRow.insertCell(3);
-
+    const del = newRow.insertCell(4);
+    const update = newRow.insertCell(5);
     // Set the cell content with the book information
     titleCell.textContent = book.title;
     authorCell.textContent = book.author;
     pagesCell.textContent = book.pages;
     isReadCell.textContent = book.isRead ? "Read" : "Not Read";
+    del.innerHTML = '<img src="./delete.svg" class="delIcon">';
+
+    const deleteIcon = del.querySelector(".delIcon");
+
+    deleteIcon.addEventListener("click", () => {
+      newRow.remove();
+    });
   });
 }
