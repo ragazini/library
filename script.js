@@ -13,22 +13,30 @@ function Book(title, author, pages, isRead) {
 // const book1 = new Book("my book", "leo", 123);
 
 // console.log(book1.info());
+const titleInput = document.getElementById("title");
+const authorInput = document.getElementById("author");
+const pagesInput = document.getElementById("pages");
+const isReadInput = document.getElementById("isRead");
 
 function addBook() {
-  const titleInput = document.getElementById("title");
-  const authorInput = document.getElementById("author");
-  const pagesInput = document.getElementById("pages");
-  const isReadInput = document.getElementById("isRead");
-
+  // console.log(isReadInput)
+  // console.log({ isReadInput });
   const title = titleInput.value;
   const author = authorInput.value;
   const pages = pagesInput.value;
   const isRead = isReadInput.checked;
-  // console.log(isReadInput)
-  // console.log({ isReadInput });
-
-  if (!titleInput.value || !authorInput.value || !pagesInput.value) {
+  if (!title || !author || !pages) {
     alert("Please fill in all required fields.");
+    return;
+  }
+
+  if (title.length > 30 || author.length > 30) {
+    alert("Invalid number of characters. Please try again.");
+    return;
+  }
+
+  if (!isNaN(author)) {
+    alert("Incorrect value. Please enter a valid number for the author.");
     return;
   }
 
@@ -57,6 +65,10 @@ openModal.addEventListener("click", () => {
 });
 
 closeModal.addEventListener("click", () => {
+  titleInput.value = "";
+  authorInput.value = "";
+  pagesInput.value = "";
+  isReadInput.checked = false;
   modal.close();
 });
 

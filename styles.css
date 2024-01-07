@@ -25,6 +25,10 @@ body {
   margin-top: 0px;
 }
 
+.modal {
+  border: none;
+}
+
 .modal-form {
   display: flex;
   flex-direction: column;
@@ -52,10 +56,10 @@ body {
 .modal::backdrop {
   /* background: linear-gradient(45deg, red, blue); */
   background-color: gray;
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
-¸ #submit {
+#submit {
   background-color: rgb(36, 132, 236);
   color: white;
   border: none;
