@@ -5,26 +5,46 @@ function Book(title, author, pages, isRead) {
   this.author = author;
   this.pages = pages;
   this.isRead = isRead !== undefined ? isRead : false;
-  // this.info = function () {
-  //   return `${this.title} by ${this.author}, ${this.pages} pages, ${this.isRead}`;
-  // };
 }
 
-// const book1 = new Book("my book", "leo", 123);
+let titleInput = document.getElementById("title");
+let authorInput = document.getElementById("author");
+let pagesInput = document.getElementById("pages");
+let isReadInput = document.getElementById("isRead");
 
-// console.log(book1.info());
-const titleInput = document.getElementById("title");
-const authorInput = document.getElementById("author");
-const pagesInput = document.getElementById("pages");
-const isReadInput = document.getElementById("isRead");
+const modal = document.querySelector(".modal");
+const openModal = document.querySelector(".modal-open");
+const closeModal = document.querySelector(".modal-close");
+const submitBtn = document.getElementById("submit");
 
-function addBook() {
-  // console.log(isReadInput)
-  // console.log({ isReadInput });
+openModal.addEventListener("click", () => {
+  modal.showModal();
+});
+
+closeModal.addEventListener("click", () => {
+  clearForm();
+  modal.close();
+});
+
+submitBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  addOrUpdateBook();
+  displayBooks();
+});
+
+function clearForm() {
+  titleInput.value = "";
+  authorInput.value = "";
+  pagesInput.value = "";
+  isReadInput.checked = false;
+}
+
+function addOrUpdateBook() {
   const title = titleInput.value;
   const author = authorInput.value;
   const pages = pagesInput.value;
   const isRead = isReadInput.checked;
+
   if (!title || !author || !pages) {
     alert("Please fill in all required fields.");
     return;
@@ -41,52 +61,27 @@ function addBook() {
   }
 
   const newBook = new Book(title, author, pages, isRead);
-  library.push(newBook);
 
-  // Clear input values
-  titleInput.value = "";
-  authorInput.value = "";
-  pagesInput.value = "";
-  isReadInput.checked = false;
+  const dataIndex = submitBtn.getAttribute("data-index");
 
-  // Close the modal
+  if (dataIndex !== null) {
+    // If dataIndex exists, it means we are updating an existing book
+    library[dataIndex] = newBook;
+    submitBtn.removeAttribute("data-index");
+  } else {
+    // If dataIndex is null, it means we are adding a new book
+    library.push(newBook);
+  }
+
+  clearForm();
   modal.close();
-
-  console.log(library);
 }
-
-const modal = document.querySelector(".modal");
-const openModal = document.querySelector(".modal-open");
-const closeModal = document.querySelector(".modal-close");
-const submitBtn = document.getElementById("submit");
-
-openModal.addEventListener("click", () => {
-  modal.showModal();
-});
-
-closeModal.addEventListener("click", () => {
-  titleInput.value = "";
-  authorInput.value = "";
-  pagesInput.value = "";
-  isReadInput.checked = false;
-  modal.close();
-});
-
-submitBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  addBook();
-  displayBooks();
-});
 
 function displayBooks() {
   const tableBody = document.getElementById("tbody");
-
-  // Clear existing rows
   tableBody.innerHTML = "";
 
-  // Iterate over the library array and add each book to the table
-  library.forEach((book) => {
-    // Create a new row and cells for the book information
+  library.forEach((book, index) => {
     const newRow = tableBody.insertRow();
     const titleCell = newRow.insertCell(0);
     const authorCell = newRow.insertCell(1);
@@ -94,17 +89,45 @@ function displayBooks() {
     const isReadCell = newRow.insertCell(3);
     const del = newRow.insertCell(4);
     const update = newRow.insertCell(5);
-    // Set the cell content with the book information
+
     titleCell.textContent = book.title;
     authorCell.textContent = book.author;
     pagesCell.textContent = book.pages;
     isReadCell.textContent = book.isRead ? "Read" : "Not Read";
-    del.innerHTML = '<img src="./delete.svg" class="delIcon">';
 
+    del.innerHTML = `<img src="./delete.svg" class="delIcon" data-index="${index}">`;
     const deleteIcon = del.querySelector(".delIcon");
-
     deleteIcon.addEventListener("click", () => {
-      newRow.remove();
+      library.splice(index, 1);
+      displayBooks();
+    });
+
+    update.innerHTML = `<img src="./update.svg" class="updateIcon" data-index="${index}">`;
+
+    const updateIcon = update.querySelector(".updateIcon");
+    updateIcon.addEventListener("click", () => {
+      openUpdateModal(library[index], index);
     });
   });
 }
+
+const openUpdateModal = (book, dataIndex) => {
+  titleInput.value = book.title;
+  authorInput.value = book.author;
+  pagesInput.value = book.pages;
+  isReadInput.checked = book.isRead;
+
+  submitBtn.setAttribute("data-index", dataIndex);
+  modal.showModal();
+};
+
+// const updateBook = () => {
+//   addOrUpdateBook();
+//   displayBooks();
+// };
+
+// const addBookBtn = document.getElementById("addBookBtn");
+// addBookBtn.addEventListener("click", () => {
+//   clearForm();
+//   modal.showModal();
+// });
