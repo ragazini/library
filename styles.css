@@ -1,0 +1,120 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  width: 70vw;
+  background-color: blanchedalmond;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  /* background-color: bisque; */
+}
+
+.modal-header-nb {
+  padding: 0;
+  margin-top: 0px;
+}
+
+.modal {
+  border: none;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  gap: 10px;
+}
+
+.pages,
+.author,
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
+.modal-open {
+  cursor: pointer;
+}
+
+.modal-close {
+  cursor: pointer;
+  margin-top: 0px;
+}
+
+.modal::backdrop {
+  /* background: linear-gradient(45deg, red, blue); */
+  background-color: gray;
+  opacity: 0.6;
+}
+
+#submit {
+  background-color: rgb(36, 132, 236);
+  color: white;
+  border: none;
+  padding: 5px;
+}
+
+/* */
+
+html {
+  font-family: sans-serif;
+}
+
+table {
+  border-collapse: collapse;
+  border: 2px solid rgb(200, 200, 200);
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+}
+
+td,
+th {
+  border: 1px solid rgb(190, 190, 190);
+  padding: 10px 20px;
+}
+
+th {
+  background-color: rgb(235, 235, 235);
+}
+
+td {
+  text-align: center;
+}
+
+tr:nth-child(even) td {
+  background-color: rgb(250, 250, 250);
+}
+
+tr:nth-child(odd) td {
+  background-color: rgb(245, 245, 245);
+}
+
+caption {
+  padding: 10px;
+}
+
+.table {
+  margin-top: 50px;
+
+  width: 76.5vw;
+}
+
+.delIcon {
+  cursor: pointer;
+}
+
+.updateIcon {
+  cursor: pointer;
+}
